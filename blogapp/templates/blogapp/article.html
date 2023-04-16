@@ -1,0 +1,48 @@
+{% extends "app/layout.html" %}
+{% load static %}
+{% block content %}
+
+<div class="container">
+    <div class="container">
+
+<link type="text/css" href="{% static 'css/comments.css' %}">
+
+<div class="container">
+
+        <h2>{{ article.title }}</h2>
+        <p>
+            {{ article.content|linebreaks }}
+        </p>
+        {% if article.image %}
+            <img class="image" src="{{ article.image.url }}" alt="">
+        {% endif %}
+
+
+    </div>
+    <div class="container">
+        <h2>Добавить комментарий</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">комментировать &raquo</button>
+        </form>
+
+
+    </div>
+    <div class="container justify-content-center mt-5 border-left border-right">
+        {% for comment in comments %}
+            <div class="list-group-item">
+            <div class="content">{{ comment.content }}</div>
+                <div class="bottom-left">Автор: {{ comment.user }}</div>
+            <div class="bottom-right">Оценка: {{ comment.mark }}</div>
+            </div>
+        {% endfor %}
+
+        </div>
+
+
+    </div>
+</div>
+</div>
+    {% endblock %}
+

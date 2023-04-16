@@ -1,0 +1,18 @@
+{% extends "app/layout.html" %}
+
+{% block content %}
+
+<div class="container">
+        <h2>Добавить достижение</h2>
+        <p>
+            __добавьте ваше достижение__
+        </p>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type='submit' class="btn btn-primary btn-large">добавить &raquo</button>
+        </form>
+</div>
+
+{% endblock %}
+

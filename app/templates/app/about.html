@@ -1,0 +1,24 @@
+{% extends "app/layout.html" %}
+
+{% block content %}
+<div class="content">
+<h2>Здравствуйте, меня зовут Апаницина Анна!</h2>
+<h3>Хочу рассказать вам о себе</h3>
+
+<p>Здесь будет информация </p>
+</div>
+
+
+<div class="content">
+    <h2>Мои достижения</h2>
+    <ul>{% for award in awards %}
+        <li>
+            <h6>{{ award.title }}</h6>
+            <p>{{ award.content }}</p>
+            <img width="60%" height="60%" src="{{ award.image.url }}" alt="{{ award.title }}">
+        </li>
+    {% endfor %}</ul>
+</div>
+{% endblock %}
+
+

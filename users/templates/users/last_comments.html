@@ -1,0 +1,21 @@
+{% extends "app/layout.html" %}
+
+{% block content %}
+
+<h2>{{ title }}</h2>
+<div class="content">
+   <ul>
+       {% for comment in comments %}
+        <li>
+            <p>Автор: {{ comment.user }}</p>
+            <p>Комментарий: {{ comment.content }}</p>
+            <p>Оценка: {{ comment.mark }}</p>
+            <a href="{{ comment.article.get_absolute_url }}"><p>Статья: {{ comment.article.title }}</p></a>
+        </li>
+       {% endfor %}
+   </ul>
+</div>
+
+
+
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends "app/layout.html" %}
+
+{% block content %}
+
+<div class="jumbotron">
+
+
+    {% if request.user.is_seperuser or request.user.is_staff %}
+    <h1>Администрирование</h1>
+    <p class="lead">Управление блогом</p>
+    <p><a href="{% url 'blog_' %}" class="btn btn-primary btn-large">перейти &raquo;</a></p>
+
+    {% endif %}
+
+    <h1>Мой блог</h1>
+    <p class="lead">Добро пожаловать на мой сайт. Ознакомьтесь со свежими статьями!</p>
+    <p><a href="{% url 'blog_articles' %}" class="btn btn-primary btn-large">перейти &raquo;</a></p>
+
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>Обо мне</h2>
+        <p>
+           Прочитай обо мне: моя биография, жизненный путь, достижения и цели на будущее.
+        </p>
+        <p><a class="btn btn-default" href="{% url 'about' %}">перейти &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Связь со мной</h2>
+        <p>Если у вас возникли деловые вопросы, или же столь деловые предложения, вы можете со мной связаться.</p>
+        <p><a class="btn btn-default" href="{% url 'contact' %}">перейти &raquo;</a></p>
+    </div>
+
+</div>
+
+
+{% endblock %}

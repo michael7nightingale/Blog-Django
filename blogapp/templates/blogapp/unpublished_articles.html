@@ -1,0 +1,42 @@
+{% extends "app/layout.html" %}
+{% load static %}
+{% block content %}
+
+<div class="jumbotron">
+   <h2>Неопубликованные статьи</h2>
+    <p class="lead">Вносите изменения в статьи или вовсе удаляйте их</p>
+    <a href="{% url 'blog_' %}" class="btn btn-primary btn-large">назад к управлению&raquo;</a>
+</div>
+
+<div class="container">
+ {% for a in articles %}
+<!-- Item -->
+        <article class="card border-0 shadow-sm overflow-hidden mb-4">
+          <div class="row g-0">
+            <div class="col-sm-4 position-relative bg-position-center bg-repeat-0 bg-size-cover" style="background-image: url({% static 'main' %}); min-height: 15rem;">
+              <a href="blog-single.html" class="position-absolute top-0 start-0 w-100 h-100" aria-label="Read more"></a>
+              <a href="#" class="btn btn-icon btn-light bg-white border-white btn-sm rounded-circle position-absolute top-0 end-0 zindex-5 me-3 mt-3" data-bs-toggle="tooltip" data-bs-placement="left" title="Read later">
+                <i class="bx bx-bookmark"></i>
+              </a>
+            </div>
+            <div class="col-sm-8 col-md-7">
+              <div class="card-body">
+                <div class="d-flex align-items-center mb-3">
+                  <span class="fs-sm text-muted border-start ps-3 ms-3">{{ a.time_created }}</span>
+                </div>
+                <h3 class="h4">
+                  <a href="{% url 'blog_article_edit' a.slug %}">{{ a.title }}</a>
+                </h3>
+                <p class="lead">{{ a.content|truncatewords:50 }}</p>
+                <hr class="my-4">
+                <div class="d-flex align-items-center justify-content-between">
+                </div>
+                  <p><a href="{% url 'blog_article_edit' a.slug %}" class="btn btn-primary btn-large">читать&raquo;</a></p>
+                </div>
+            </div>
+          </div>
+        </article>
+{% endfor %}
+</div>
+
+{% endblock %}

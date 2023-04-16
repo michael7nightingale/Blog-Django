@@ -1,0 +1,36 @@
+{% extends "app/layout.html" %}
+
+{% block content %}
+
+<div class="jumbotron">
+    <h1>Управление блогом</h1>
+    <p class="lead">Опубликованные статьи</p>
+    <a href="{% url 'blog_articles' %}" class="btn btn-primary btn-large">перейти &raquo;</a>
+
+    <p class="lead">Неопубликованные статьи</p>
+    <a href="{% url 'blog_unpublished_articles' %}" class="btn btn-primary btn-large">перейти &raquo;</a>
+    </div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>Добавить статью</h2>
+        <a class="btn btn-primary btn-large" href="{% url 'blog_add_article' %}">добавить &raquo</a>
+    </div>
+    <div class="col-md-4">
+        <h2>Последние комментарии</h2>
+        <a class="btn btn-primary btn-large" href="{% url 'users_last_comments' %}">читать &raquo</a>
+    </div>
+    <div class="col-md-4">
+        <h2>Последние пользователи</h2>
+        <p>Посмотрите последних пользователей, которые зарегистрировались на вашем ресурсе</p>
+        <a class="btn btn-primary btn-large" href="{% url 'users_last_users' %}">смотреть &raquo</a>
+    </div>
+ <div class="col-md-4">
+        <h2>Добавить достижения</h2>
+       <a class="btn btn-primary btn-large" href="{% url 'add_award' %}">добавить &raquo</a>
+    </div>
+</div>
+
+{% endblock %}
+
+
